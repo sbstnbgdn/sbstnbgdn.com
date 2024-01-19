@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeadingBubble from "../components/HeadingBubble.astro";
+import Spacer from "../components/Spacer.astro";
+import Bubble from "../components/Bubble.astro";
+import LinkBubble from "../components/LinkBubble.astro";
+---
+
+<BaseLayout
+  title="Error 404"
+  description="Oops! This page was not found, but Sebastian Bogdan's portfolio brims with remarkable digital marketing and web projects. Navigate back to discover his work."
+>
+  <HeadingBubble body="Error 404" />
+  <Spacer />
+  <Bubble><p>Oops! The page you're looking for isn't here.</p></Bubble>
+  <Bubble>
+    <p>
+      But don't worry, Sebastian Bogdan's portfolio is full of remarkable
+      digital marketing and web development projects.
+    </p>
+  </Bubble>
+  <LinkBubble page="/" body="Navigate back to discover my work." />
+</BaseLayout>
