@@ -1,0 +1,25 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import BubbleContainer from "../components/BubbleContainer.astro";
+import Seen from "../components/Seen.astro";
+const { title, description, canonical } = Astro.props;
+---
+
+<html lang="en-GB" dir="ltr">
+  <BaseHead title={title} description={description} canonical={canonical} />
+  <body
+    class="absolute inset-0 flex flex-col overflow-hidden font-sans text-sm text-black dark:bg-black dark:text-white sm:text-base"
+  >
+    <Header />
+    <main
+      role="main"
+      class="overflow-y-auto scroll-smooth subpixel-antialiased"
+    >
+      <BubbleContainer>
+        <slot />
+        <Seen />
+      </BubbleContainer>
+    </main>
+  </body>
+</html>

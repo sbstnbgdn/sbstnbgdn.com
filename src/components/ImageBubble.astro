@@ -1,0 +1,14 @@
+---
+import Bubble from "./Bubble.astro";
+const { className, sourceName, width, height, alt } = Astro.props;
+---
+
+<Bubble>
+  <img
+    class={className}
+    src={sourceName.src}
+    width={width}
+    height={height}
+    alt={alt}
+  />
+</Bubble>

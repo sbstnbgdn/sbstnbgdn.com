@@ -1,0 +1,14 @@
+---
+import SEO from "./SEO.astro";
+import Favicon from "./Favicon.astro";
+import Font from "./Font.astro";
+import { ViewTransitions } from "astro:transitions";
+const { title, description, canonical } = Astro.props;
+---
+
+<head>
+  <SEO title={title} description={description} canonical={canonical} />
+  <Favicon />
+  <Font />
+  <ViewTransitions />
+</head>

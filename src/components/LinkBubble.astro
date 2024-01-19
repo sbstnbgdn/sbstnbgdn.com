@@ -1,0 +1,10 @@
+---
+import Bubble from "./Bubble.astro";
+const { page, body } = Astro.props;
+---
+
+<Bubble>
+  <h2>
+    <a rel="prefetch" class="underline" href={page}>{body}</a>
+  </h2>
+</Bubble>

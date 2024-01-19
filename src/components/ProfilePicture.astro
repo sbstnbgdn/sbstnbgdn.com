@@ -1,0 +1,15 @@
+---
+import { Image } from "astro:assets";
+import profile from "../assets/profile.jpg";
+---
+
+<Image
+  class="h-[100px] w-[100px] rounded-full landscape:hidden md:landscape:block"
+  src={profile}
+  width="150"
+  height="150"
+  quality="high"
+  loading="eager"
+  decoding="sync"
+  alt="A portrait of Sebastian Bogdan"
+/>

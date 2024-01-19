@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Bubble from "../components/Bubble.astro";
+import LinkBubble from "../components/LinkBubble.astro";
+import Spacer from "../components/Spacer.astro";
+import HeadingBubble from "../components/HeadingBubble.astro";
+---
+
+<BaseLayout
+  title="Sebastian Bogdan"
+  description="Discover Sebastian Bogdan's portfolio as a digital marketer and web developer, specialising in social media, community management, and tech-integrated marketing."
+  canonical="https://sbstnbgdn.com/"
+>
+  <HeadingBubble body="Hi, I'm Sebastian." />
+  <Bubble><p>I'm a marketer based in ☀️ Brighton, UK.</p></Bubble>
+  <Bubble>
+    <p>
+      I specialise in Digital Marketing, Social Media Management and Community
+      Management.
+    </p>
+  </Bubble>
+  <Spacer />
+  <Bubble>
+    <p>Oh, and I'm also super passionate about web development! 🤩</p>
+  </Bubble>
+  <Spacer />
+  <Bubble><p>Here are a few examples of my work:</p></Bubble>
+  <LinkBubble page="/how-mental-on-instagram/" body="How Mental on Instagram" />
+  <LinkBubble page="/how-mental-on-twitter/" body="How Mental on Twitter" />
+  <LinkBubble page="/how-mental-newsletter/" body="How Mental Newsletter" />
+  <LinkBubble
+    page="/community-management-for-playstark/"
+    body="Community Management for Playstark"
+  />
+</BaseLayout>
