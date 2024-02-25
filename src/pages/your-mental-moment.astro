@@ -38,6 +38,7 @@ import PinterestLogo from "../assets/PinterestLogo.png";
         src={HowMentalDark}
         alt="How Mental logo"
         class="mx-auto w-[260px] py-4"
+        loading="eager"
       />
     </div>
     <div class="bg-[#F40ACB] py-12 text-2xl leading-tight text-white">
@@ -57,7 +58,12 @@ import PinterestLogo from "../assets/PinterestLogo.png";
       </div>
     </div>
     <div class="flex flex-col items-center bg-[#F3FDF0] py-5">
-      <Image src={MentalTips} alt="Mental Tips" class="px-4 sm:px-0" />
+      <Image
+        src={MentalTips}
+        alt="Mental Tips"
+        class="px-4 sm:px-0"
+        loading="eager"
+      />
       <div class="mx-4 my-5 rounded-xl bg-white p-8 sm:w-[580px]">
         <p class="text-2xl font-bold">This Week's Mental Tip: LIFE STAGES 🧑‍🎤</p>
         <br />
@@ -97,7 +103,9 @@ import PinterestLogo from "../assets/PinterestLogo.png";
     <div class="flex flex-col items-center bg-[#FEE9FE] py-5">
       <Image src={MentalInstas} alt="Mental Instas" class="px-4 sm:px-0" />
       <div class="mx-4 my-5 sm:w-[580px]">
-        <Image src={Instagram} alt="Instagram post" />
+        <a href="https://www.instagram.com/p/CcMX14IoV2q/" target="_blank">
+          <Image src={Instagram} alt="Instagram post" />
+        </a>
         <div class="rounded-b-xl bg-white px-8 pb-8 pt-4">
           <p>
             Setting boundaries has NEVER been my strong point, in friendships,
@@ -129,7 +137,12 @@ import PinterestLogo from "../assets/PinterestLogo.png";
     <div class="flex flex-col items-center bg-[#EDEDFF] py-5">
       <Image src={MentalTweets} alt="Mental Tweets" class="px-4 sm:px-0" />
       <div class="mx-4 my-5 sm:w-[580px]">
-        <Image src={Twitter} alt="Twitter post" />
+        <a
+          href="https://twitter.com/howmental_/status/1510663859266281474"
+          target="_blank"
+        >
+          <Image src={Twitter} alt="Twitter post" />
+        </a>
         <div class="rounded-b-xl bg-white px-8 pb-8 pt-4">
           <p>
             It's an all-too-familiar scene... my friend's just told me something
@@ -172,10 +185,20 @@ import PinterestLogo from "../assets/PinterestLogo.png";
       </div>
       <div class="mx-4 mb-6 flex flex-col gap-5 sm:w-[580px] sm:flex-row">
         <div class="sm:w-1/2">
-          <Image src={MentalCap} alt="Mental Cap" />
+          <a
+            href="https://www.howmental.com/product/emblem-cap"
+            target="_blank"
+          >
+            <Image src={MentalCap} alt="Mental Cap" />
+          </a>
         </div>
         <div class="sm:w-1/2">
-          <Image src={MentalBeanie} alt="Mental Beanie" />
+          <a
+            href="https://www.howmental.com/product/the-mental-beanie"
+            target="_blank"
+          >
+            <Image src={MentalBeanie} alt="Mental Beanie" />
+          </a>
         </div>
       </div>
       <a
@@ -188,7 +211,9 @@ import PinterestLogo from "../assets/PinterestLogo.png";
     <div class="flex flex-col items-center bg-[#FEE9F9] py-5">
       <Image src={MentalTools} alt="Mental Tools" class="px-4 sm:px-0" />
       <div class="mx-4 my-5 sm:w-[580px]">
-        <Image src={Aura} alt="Aura logo" />
+        <a href="https://www.howmental.com/item/aura" target="_blank">
+          <Image src={Aura} alt="Aura logo" />
+        </a>
         <div class="rounded-b-xl bg-white px-8 py-6">
           <p class="font-bold">
             Is it just me or has EVERYTHING been draining recently?? I've had
@@ -218,7 +243,9 @@ import PinterestLogo from "../assets/PinterestLogo.png";
         >Check out Aura</a
       >
       <div class="mx-4 my-5 flex flex-col items-center sm:w-[580px]">
-        <Image src={HowMentalLight} alt="How Mental logo" />
+        <a href="https://www.howmental.com/all/apps-products" target="_blank">
+          <Image src={HowMentalLight} alt="How Mental logo" />
+        </a>
         <div class="rounded-b-xl bg-white px-8 pb-6">
           <p class="font-bold">
             Not interested in Aura? We've got a whole universe of tools for you
@@ -298,7 +325,7 @@ import PinterestLogo from "../assets/PinterestLogo.png";
           <a href="mailto:hello@howmental.com" class="text-sky-600 underline"
             >hello@howmental.com</a
           > to your address book or allow list. Want out of the loop? <a
-            href="#"
+            href="/"
             class="text-sky-600 underline">Unsubscribe</a
           >.<br />
           <br />
