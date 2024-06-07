@@ -6,7 +6,9 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://sbstnbgdn.com",
   integrations: [tailwind(), sitemap()],
-  prefetch: true,
+  prefetch: {
+    prefetchAll: true,
+  },
   experimental: {
     clientPrerender: true,
   },
