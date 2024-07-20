@@ -1,7 +1,7 @@
 {
   "name": "sbstnbgdn.com",
   "type": "module",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -16,6 +16,7 @@
     "tailwindcss": "^3.4.6"
   },
   "devDependencies": {
+    "@types/bun": "^1.1.6",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.5"
