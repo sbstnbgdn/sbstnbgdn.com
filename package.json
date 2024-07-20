@@ -13,7 +13,6 @@
     "@astrojs/sitemap": "^3.1.6",
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.12.2",
-    "esm": "^3.2.25",
     "tailwindcss": "^3.4.6"
   },
   "devDependencies": {
@@ -21,5 +20,12 @@
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.5"
+  },
+  "resolutions": {
+    "ansi-align": "latest",
+    "string-width": "latest"
+  },
+  "engines": {
+    "bun": ">=1.0.0"
   }
 }
