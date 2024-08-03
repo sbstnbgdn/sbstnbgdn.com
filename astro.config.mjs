@@ -9,7 +9,4 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true,
   },
-  experimental: {
-    clientPrerender: true,
-  },
 });
