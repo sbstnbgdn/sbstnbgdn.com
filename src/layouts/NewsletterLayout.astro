@@ -1,11 +1,12 @@
 ---
+import "../styles/global.css";
 import BaseHead from "../components/BaseHead.astro";
 const { title, description, canonical } = Astro.props;
 ---
 
 <html lang="en-GB" dir="ltr">
   <BaseHead title={title} description={description} canonical={canonical} />
-  <body class="text-center font-arial text-[#333333] subpixel-antialiased">
+  <body class="font-arial text-center text-[#333333] subpixel-antialiased">
     <slot />
   </body>
 </html>
