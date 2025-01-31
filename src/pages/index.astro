@@ -1,9 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Bubble from "../components/Bubble.astro";
-import LinkBubble from "../components/LinkBubble.astro";
-import Spacer from "../components/Spacer.astro";
 import HeadingBubble from "../components/HeadingBubble.astro";
+import Bubble from "../components/Bubble.astro";
+import Spacer from "../components/Spacer.astro";
+import MyWork from "../components/MyWork.astro";
 ---
 
 <Layout
@@ -25,11 +25,5 @@ import HeadingBubble from "../components/HeadingBubble.astro";
   </Bubble>
   <Spacer />
   <Bubble><p>Here are a few examples of my work:</p></Bubble>
-  <LinkBubble page="/how-mental-on-instagram/" body="How Mental on Instagram" />
-  <LinkBubble page="/how-mental-on-twitter/" body="How Mental on Twitter" />
-  <LinkBubble page="/how-mental-newsletter/" body="How Mental Newsletter" />
-  <LinkBubble
-    page="/community-management-for-playstark/"
-    body="Community Management for Playstark"
-  />
+  <MyWork />
 </Layout>
