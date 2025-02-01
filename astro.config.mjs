@@ -6,4 +6,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   trailingSlash: "never",
+  redirects: {
+    "/meet": "https://cal.com/sbstnbgdn/meet",
+  },
 });
