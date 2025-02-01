@@ -1,7 +1,7 @@
 {
   "name": "sbstnbgdn.com",
   "type": "module",
-  "version": "1.10.5",
+  "version": "1.11.0",
   "engines": {
     "bun": "*"
   },
@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "version": "bun run version.ts"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.1",
