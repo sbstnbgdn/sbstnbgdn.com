@@ -1,30 +1,29 @@
-import { inc, valid as isValidVersion } from "semver";
+import { inc, valid } from "semver";
 
 const path = "./package.json";
-const variants = ["major", "minor", "patch"] as const;
+const RELEASE_TYPES = new Set(["major", "minor", "patch"]);
 
-type ReleaseType = (typeof variants)[number];
-
-const isValidTarget = (subject: string): subject is ReleaseType =>
-  variants.includes(subject as ReleaseType);
-
-const target = Bun.argv.pop()!;
 const json = await Bun.file(path).json();
-const { version: current } = json;
+const current = json.version;
 
-if (!isValidVersion(current)) {
-  throw new Error(`Invalid current version ${current}`);
-}
+if (!valid(current)) throw new Error(`Invalid current version: ${current}`);
 
-const desired = isValidVersion(target)
-  ? target
-  : isValidTarget(target)
-    ? inc(current, target)
-    : null;
+const target = Bun.argv[2];
+if (!target) throw new Error("Missing version argument");
+
+const desired = RELEASE_TYPES.has(target as any)
+  ? inc(current, target as "major" | "minor" | "patch")
+  : valid(target) || null;
 
 if (!desired) {
-  throw new Error("Invalid target version");
+  throw new Error(
+    `Invalid target "${target}". Use semver version or major/minor/patch`,
+  );
 }
 
-console.debug(`${current} → ${desired}`);
-await Bun.write(path, JSON.stringify({ ...json, version: desired }, null, 2));
+await Bun.write(
+  path,
+  JSON.stringify({ ...json, version: desired }, null, 2) + "\n",
+);
+
+console.log(`Updated ${path} from ${current} to ${desired}`);
