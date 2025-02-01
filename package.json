@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "version": "bun run version.ts"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.1",
