@@ -1,51 +1,30 @@
-import { fail } from "node:assert";
-import { $ } from "bun";
-import { type ReleaseType, inc, valid as isValidVersion } from "semver";
+import { inc, valid as isValidVersion } from "semver";
 
 const path = "./package.json";
-const variants: ReleaseType[] = [
-  "major",
-  "premajor",
-  "minor",
-  "preminor",
-  "patch",
-  "prepatch",
-  "prerelease",
-];
+const variants = ["major", "minor", "patch"] as const;
+
+type ReleaseType = (typeof variants)[number];
 
 const isValidTarget = (subject: string): subject is ReleaseType =>
-  (variants as string[]).includes(subject);
+  variants.includes(subject as ReleaseType);
 
-const isDirty = async () => (await $`git status --porcelain`.quiet()).text();
-
-const target = Bun.argv.pop();
+const target = Bun.argv.pop()!;
 const json = await Bun.file(path).json();
 const { version: current } = json;
 
-if (!isValidVersion(current))
+if (!isValidVersion(current)) {
   throw new Error(`Invalid current version ${current}`);
-
-if (await isDirty())
-  throw new Error(
-    "There are uncommitted changes. Commit them before releasing.",
-  );
+}
 
 const desired = isValidVersion(target)
   ? target
-  : target && isValidTarget(target)
-    ? inc(current, target, "beta", "1")
-    : fail("invalid target version");
+  : isValidTarget(target)
+    ? inc(current, target)
+    : null;
 
-if (!desired) throw new Error("Failed to bump");
-console.debug(current, "—>", desired);
+if (!desired) {
+  throw new Error("Invalid target version");
+}
 
-await Bun.write(
-  path,
-  JSON.stringify(Object.assign(json, { version: desired }), null, 2),
-);
-
-await $`git add ${path}`;
-await $`git commit -m v${desired}`;
-await $`git tag v${desired}`;
-await $`git push`;
-await $`git push --tags`;
+console.debug(`${current} → ${desired}`);
+await Bun.write(path, JSON.stringify({ ...json, version: desired }, null, 2));
