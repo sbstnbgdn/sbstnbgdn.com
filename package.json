@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.10.4",
   "engines": {
-    "node": "18.x"
+    "bun": "*"
   },
   "scripts": {
     "dev": "astro dev",
