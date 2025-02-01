@@ -1,7 +1,7 @@
 {
   "name": "sbstnbgdn.com",
   "type": "module",
-  "version": "1.10.3",
+  "version": "1.10.4",
   "engines": {
     "node": "18.x"
   },

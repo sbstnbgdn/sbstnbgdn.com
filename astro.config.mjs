@@ -7,6 +7,9 @@ export default defineConfig({
   },
   trailingSlash: "never",
   redirects: {
-    "/meet": "https://cal.com/sbstnbgdn/meet",
+    "/meet": {
+      status: 302,
+      destination: "https://cal.com/sbstnbgdn/meet",
+    },
   },
 });
