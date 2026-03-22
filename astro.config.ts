@@ -7,6 +7,23 @@ export default defineConfig({
   trailingSlash: "never",
   build: {
     format: "file",
+    inlineStylesheets: "always",
+  },
+  security: {
+    csp: {
+      directives: [
+        "default-src 'self'",
+        "connect-src 'self'",
+        "img-src 'self'",
+        "font-src 'self'",
+        "object-src 'none'",
+        "base-uri 'self'",
+        "form-action 'self'",
+      ],
+    },
+  },
+  markdown: {
+    syntaxHighlight: false,
   },
   integrations: [sitemap()],
   vite: {
