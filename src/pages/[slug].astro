@@ -1,0 +1,58 @@
+---
+import BackBubble from "../components/BackBubble.astro";
+import Bubble from "../components/Bubble.astro";
+import ExternalLink from "../components/ExternalLink.astro";
+import HeadingBubble from "../components/HeadingBubble.astro";
+import Spacer from "../components/Spacer.astro";
+import { experiences } from "../data/experience";
+import type { Experience } from "../data/experience";
+import Layout from "../layouts/Layout.astro";
+
+export function getStaticPaths() {
+  return experiences.map((experience) => ({
+    params: { slug: experience.slug },
+    props: { experience },
+  }));
+}
+
+const { experience } = Astro.props as { experience: Experience };
+---
+
+<Layout
+  title={experience.title}
+  description={experience.description}
+  pathname={`/${experience.slug}`}
+>
+  <HeadingBubble body={experience.heading} />
+  {
+    experience.blocks.map((block) => {
+      if (block.type === "bubble") {
+        return (
+          <Bubble>
+            <p>
+              {block.parts.map((part) => {
+                if (part.type === "text") {
+                  return part.value;
+                }
+
+                if (part.external) {
+                  return (
+                    <ExternalLink href={part.href}>{part.label}</ExternalLink>
+                  );
+                }
+
+                return <a href={part.href}>{part.label}</a>;
+              })}
+            </p>
+          </Bubble>
+        );
+      }
+
+      if (block.type === "spacer") {
+        return <Spacer />;
+      }
+
+      return <BackBubble />;
+    })
+  }
+</Layout>

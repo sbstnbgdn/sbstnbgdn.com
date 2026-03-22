@@ -1,24 +1,39 @@
 {
   "name": "sbstnbgdn.com",
+  "private": true,
   "type": "module",
-  "version": "1.13.1",
-  "engines": {
-    "bun": "*"
-  },
+  "version": "2.0.0",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "format": "prettier --write .",
-    "version": "bun run version.ts"
+    "dev": "bunx --bun astro dev",
+    "prebuild": "test -d node_modules || bun install --frozen-lockfile",
+    "build": "bunx --bun astro build",
+    "preview": "bunx --bun astro preview",
+    "typecheck": "bunx --bun astro check",
+    "canonicalise": "bun scripts/canonicalise.ts",
+    "lint": "eslint --cache .",
+    "lint:fix": "eslint --cache --fix . && bun run canonicalise",
+    "knip": "knip-bun",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "check": "bun run lint:fix && bun run typecheck && bun run knip",
+    "verify": "bun run lint:fix && bun run typecheck && bun run format:write && bun run knip && bun run build"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "3.7.1",
+    "@tailwindcss/vite": "4.2.2",
+    "astro": "6.0.8",
+    "tailwindcss": "4.2.2"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.1.7",
-    "astro": "^5.8.0",
-    "prettier": "^3.5.3",
-    "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.6.11",
-    "tailwindcss": "^4.1.7"
+    "@astrojs/check": "0.9.8",
+    "@tailwindcss/node": "4.2.2",
+    "eslint": "10.1.0",
+    "eslint-plugin-astro": "1.6.0",
+    "knip": "6.0.2",
+    "prettier": "3.8.1",
+    "prettier-plugin-astro": "0.14.1",
+    "prettier-plugin-tailwindcss": "0.7.2",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.57.1"
   }
 }

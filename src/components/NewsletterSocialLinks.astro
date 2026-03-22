@@ -1,0 +1,22 @@
+---
+import { Image } from "astro:assets";
+import type { NewsletterSocialLink } from "../data/newsletter";
+import ExternalLink from "./ExternalLink.astro";
+
+const { links } = Astro.props as {
+  links: NewsletterSocialLink[];
+};
+---
+
+<div class="mx-auto my-8 flex justify-center gap-4 sm:w-[300px] sm:gap-0">
+  {
+    links.map((link) => (
+      <ExternalLink
+        href={link.href}
+        class="mx-auto h-10 w-10 rounded-md bg-[#F40ACB]"
+      >
+        <Image src={link.icon} alt={link.alt} />
+      </ExternalLink>
+    ))
+  }
+</div>

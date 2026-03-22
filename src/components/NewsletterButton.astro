@@ -1,0 +1,11 @@
+---
+import type { NewsletterLink } from "../data/newsletter";
+import ExternalLink from "./ExternalLink.astro";
+
+const { link } = Astro.props as {
+  link: NewsletterLink;
+};
+---
+
+<ExternalLink href={link.href} class={link.className}>{link.label}</ExternalLink
+>

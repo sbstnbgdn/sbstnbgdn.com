@@ -1,0 +1,21 @@
+---
+const {
+  href,
+  class: className,
+  ...attributes
+} = Astro.props as {
+  href: string;
+  class?: string;
+  [key: string]: unknown;
+};
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class={className}
+  {...attributes}
+>
+  <slot />
+</a>

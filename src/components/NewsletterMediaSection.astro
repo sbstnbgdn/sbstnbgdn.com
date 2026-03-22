@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+import type { NewsletterMediaSectionData } from "../data/newsletter";
+import ExternalLink from "./ExternalLink.astro";
+import NewsletterButton from "./NewsletterButton.astro";
+
+const { section } = Astro.props as {
+  section: NewsletterMediaSectionData;
+};
+---
+
+<div class:list={["flex flex-col items-center py-5", section.backgroundClass]}>
+  <Image
+    src={section.headerImage}
+    alt={section.headerAlt}
+    class="px-4 sm:px-0"
+  />
+  <div class="mx-4 my-5 sm:w-[580px]">
+    <ExternalLink href={section.previewHref}>
+      <Image src={section.previewImage} alt={section.previewAlt} />
+    </ExternalLink>
+    <div class="rounded-b-xl bg-white px-8 pt-4 pb-8">
+      <p>{section.body}</p>
+    </div>
+  </div>
+  <NewsletterButton link={section.cta} />
+</div>

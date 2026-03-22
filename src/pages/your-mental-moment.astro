@@ -1,41 +1,38 @@
 ---
-import NewsletterLayout from "../layouts/NewsletterLayout.astro";
 import { Image } from "astro:assets";
-import HowMentalDark from "../assets/HowMentalDark.jpg";
-import MentalTips from "../assets/MentalTips.png";
-import MentalInstas from "../assets/MentalInstas.png";
-import Instagram from "../assets/Instagram.jpg";
-import MentalTweets from "../assets/MentalTweets.png";
-import Twitter from "../assets/Twitter.jpg";
-import MentalMovement from "../assets/MentalMovement.png";
-import MentalCap from "../assets/MentalCap.png";
-import MentalBeanie from "../assets/MentalBeanie.png";
-import MentalTools from "../assets/MentalTools.png";
-import Aura from "../assets/Aura.png";
-import HowMentalLight from "../assets/HowMentalLight.png";
-import FacebookLogo from "../assets/FacebookLogo.png";
-import TwitterLogo from "../assets/TwitterLogo.png";
-import InstagramLogo from "../assets/InstagramLogo.png";
-import LinkedInLogo from "../assets/LinkedInLogo.png";
-import PinterestLogo from "../assets/PinterestLogo.png";
+import ExternalLink from "../components/ExternalLink.astro";
+import NewsletterButton from "../components/NewsletterButton.astro";
+import NewsletterMediaSection from "../components/NewsletterMediaSection.astro";
+import NewsletterSocialLinks from "../components/NewsletterSocialLinks.astro";
+import {
+  auraLink,
+  instagramSection,
+  movementLink,
+  movementProducts,
+  newsletterAssets,
+  newsletterBackPath,
+  newsletterSocialLinks,
+  tipsLink,
+  toolsLink,
+  twitterSection,
+} from "../data/newsletter";
+import NewsletterLayout from "../layouts/NewsletterLayout.astro";
 ---
 
 <NewsletterLayout
   title="Your Mental Moment - Sebastian Bogdan"
   description="Discover a sample newsletter Sebastian Bogdan designed, wrote, and sent out to thousands of subscribers at How Mental, called 'Your Mental Moment'."
-  canonical="https://sbstnbgdn.com/your-mental-moment"
+  pathname="/your-mental-moment"
 >
   <header role="banner" class="py-2">
     <p class="font-sans">
-      Go <a href="/how-mental-newsletter/" class="hover:text-teal underline"
-        >back</a
-      >
+      Go <a href={newsletterBackPath} class="hover:text-teal underline">back</a>
     </p>
   </header>
   <main role="main">
     <div class="w-full bg-[#040404]">
       <Image
-        src={HowMentalDark}
+        src={newsletterAssets.howMentalDark}
         alt="How Mental logo"
         class="mx-auto w-[260px] py-4"
         loading="eager"
@@ -59,7 +56,7 @@ import PinterestLogo from "../assets/PinterestLogo.png";
     </div>
     <div class="flex flex-col items-center bg-[#F3FDF0] py-5">
       <Image
-        src={MentalTips}
+        src={newsletterAssets.mentalTips}
         alt="Mental Tips"
         class="px-4 sm:px-0"
         loading="eager"
@@ -93,75 +90,16 @@ import PinterestLogo from "../assets/PinterestLogo.png";
           up over the past, or the future. Love the stage you're at! 😘❤️
         </p>
       </div>
-      <a
-        href="https://www.howmental.com/discover"
-        target="_blank"
-        class="mx-auto block w-48 rounded bg-[#46D71F] py-3 font-bold text-white"
-        >Find more Tips</a
-      >
+      <NewsletterButton link={tipsLink} />
     </div>
-    <div class="flex flex-col items-center bg-[#FEE9FE] py-5">
-      <Image src={MentalInstas} alt="Mental Instas" class="px-4 sm:px-0" />
-      <div class="mx-4 my-5 sm:w-[580px]">
-        <a href="https://www.instagram.com/p/CcMX14IoV2q/" target="_blank">
-          <Image src={Instagram} alt="Instagram post" />
-        </a>
-        <div class="rounded-b-xl bg-white px-8 pt-4 pb-8">
-          <p>
-            Setting boundaries has NEVER been my strong point, in friendships,
-            in relationships, with anyone tbh! 🤣 It was one of my friends who
-            brought this up to me actually, and they said I was being a bit of
-            “pushover”. And I couldn't disagree with them, at all, because it
-            was true 😬 I'd rather let someone cross the line than make a big
-            fuss about it and be 'difficult'. But sometimes, we HAVE to be
-            difficult whether we like it or not. Our feelings matter, regardless
-            of what anyone has told us. So darlings, let's set those boundaries
-            and stick to them, ok? 😏
-          </p>
-        </div>
-      </div>
-      <a
-        href="https://www.instagram.com/howmental/"
-        target="_blank"
-        class="mx-auto block w-48 rounded bg-[#FB00ED] py-3 font-bold text-white"
-        >See more Instas</a
-      >
-    </div>
-    <div class="flex flex-col items-center bg-[#EDEDFF] py-5">
-      <Image src={MentalTweets} alt="Mental Tweets" class="px-4 sm:px-0" />
-      <div class="mx-4 my-5 sm:w-[580px]">
-        <a
-          href="https://twitter.com/howmental_/status/1510663859266281474"
-          target="_blank"
-        >
-          <Image src={Twitter} alt="Twitter post" />
-        </a>
-        <div class="rounded-b-xl bg-white px-8 pt-4 pb-8">
-          <p>
-            It's an all-too-familiar scene... my friend's just told me something
-            very personal to them, something that's reaaally hard for them to
-            talk about, and I'm struggling to say anything in response 😬 It's
-            the WORST fucking feeling everrrrrrr. I want to be supportive. I
-            want my friend to know that I'm there, I'm listening, I care, but —
-            I just don't know how. And that's where these phrases come in handy!
-            They help, a lot. Just imagine hearing some of the top 3 after
-            telling your bestie something that's been on your mind for WEEKS...
-            now compare it to the bottom 3. Much kinder, and healthier, right?
-            💁‍♀️ So let's be more mindful of the words we use when we're listening
-            to the people we love, we want them to feel our full support, so
-            let's work that vocab honey! 💪😘
-          </p>
-        </div>
-      </div>
-      <a
-        href="https://twitter.com/howmental_"
-        target="_blank"
-        class="mx-auto block w-48 rounded bg-[#1A00FF] py-3 font-bold text-white"
-        >See more Tweets</a
-      >
-    </div>
+    <NewsletterMediaSection section={instagramSection} />
+    <NewsletterMediaSection section={twitterSection} />
     <div class="flex flex-col items-center bg-[#FFF9EB] py-5">
-      <Image src={MentalMovement} alt="Mental Movement" class="px-4 sm:px-0" />
+      <Image
+        src={newsletterAssets.mentalMovement}
+        alt="Mental Movement"
+        class="px-4 sm:px-0"
+      />
       <div class="mx-4 my-5 rounded-xl bg-white p-8 sm:w-[580px]">
         <p class="font-bold">
           I don't know about you, but I'm DONE living in a world where wellbeing
@@ -177,36 +115,28 @@ import PinterestLogo from "../assets/PinterestLogo.png";
         </p>
       </div>
       <div class="mx-4 mb-6 flex flex-col gap-5 sm:w-[580px] sm:flex-row">
-        <div class="sm:w-1/2">
-          <a
-            href="https://www.howmental.com/product/emblem-cap"
-            target="_blank"
-          >
-            <Image src={MentalCap} alt="Mental Cap" />
-          </a>
-        </div>
-        <div class="sm:w-1/2">
-          <a
-            href="https://www.howmental.com/product/the-mental-beanie"
-            target="_blank"
-          >
-            <Image src={MentalBeanie} alt="Mental Beanie" />
-          </a>
-        </div>
+        {
+          movementProducts.map((product) => (
+            <div class="sm:w-1/2">
+              <ExternalLink href={product.href}>
+                <Image src={product.image} alt={product.alt} />
+              </ExternalLink>
+            </div>
+          ))
+        }
       </div>
-      <a
-        href="https://www.howmental.com/represent"
-        target="_blank"
-        class="mx-auto block w-64 rounded bg-[#FDB21C] py-3 font-bold text-white"
-        >Represent the Movement</a
-      >
+      <NewsletterButton link={movementLink} />
     </div>
     <div class="flex flex-col items-center bg-[#FEE9F9] py-5">
-      <Image src={MentalTools} alt="Mental Tools" class="px-4 sm:px-0" />
+      <Image
+        src={newsletterAssets.mentalTools}
+        alt="Mental Tools"
+        class="px-4 sm:px-0"
+      />
       <div class="mx-4 my-5 sm:w-[580px]">
-        <a href="https://www.howmental.com/item/aura" target="_blank">
-          <Image src={Aura} alt="Aura logo" />
-        </a>
+        <ExternalLink href="https://www.howmental.com/item/aura">
+          <Image src={newsletterAssets.aura} alt="Aura logo" />
+        </ExternalLink>
         <div class="rounded-b-xl bg-white px-8 py-6">
           <p class="font-bold">
             Is it just me or has EVERYTHING been draining recently?? I've had
@@ -229,16 +159,11 @@ import PinterestLogo from "../assets/PinterestLogo.png";
           </p>
         </div>
       </div>
-      <a
-        href="https://www.howmental.com/item/aura"
-        target="_blank"
-        class="mx-auto block w-48 rounded bg-[#FB00AB] py-3 font-bold text-white"
-        >Check out Aura</a
-      >
+      <NewsletterButton link={auraLink} />
       <div class="mx-4 my-5 flex flex-col items-center sm:w-[580px]">
-        <a href="https://www.howmental.com/all/apps-products" target="_blank">
-          <Image src={HowMentalLight} alt="How Mental logo" />
-        </a>
+        <ExternalLink href="https://www.howmental.com/all/apps-products">
+          <Image src={newsletterAssets.howMentalLight} alt="How Mental logo" />
+        </ExternalLink>
         <div class="rounded-b-xl bg-white px-8 pb-6">
           <p class="font-bold">
             Not interested in Aura? We've got a whole universe of tools for you
@@ -252,12 +177,7 @@ import PinterestLogo from "../assets/PinterestLogo.png";
           </p>
         </div>
       </div>
-      <a
-        href="https://www.howmental.com/all/apps-products"
-        target="_blank"
-        class="mx-auto block w-48 rounded bg-black py-3 font-bold text-white"
-        >Find more tools</a
-      >
+      <NewsletterButton link={toolsLink} />
     </div>
     <div class="flex flex-col items-center bg-[#F0F0F0] py-5">
       <div class="mx-4 sm:w-[580px]">
@@ -273,43 +193,7 @@ import PinterestLogo from "../assets/PinterestLogo.png";
           <p class="font-bold">Stay Sane 😉</p>
         </div>
       </div>
-      <div class="mx-auto my-8 flex justify-center gap-4 sm:w-[300px] sm:gap-0">
-        <a
-          href="https://www.facebook.com/howmental"
-          target="_blank"
-          class="mx-auto h-10 w-10 rounded-md bg-[#F40ACB]"
-        >
-          <Image src={FacebookLogo} alt="Facebook logo" />
-        </a>
-        <a
-          href="https://twitter.com/howmental_"
-          target="_blank"
-          class="mx-auto h-10 w-10 rounded-md bg-[#F40ACB]"
-        >
-          <Image src={TwitterLogo} alt="Twitter logo" />
-        </a>
-        <a
-          href="https://www.instagram.com/howmental/"
-          target="_blank"
-          class="mx-auto h-10 w-10 rounded-md bg-[#F40ACB]"
-        >
-          <Image src={InstagramLogo} alt="Instagram logo" />
-        </a>
-        <a
-          href="https://www.linkedin.com/company/howmental"
-          target="_blank"
-          class="mx-auto h-10 w-10 rounded-md bg-[#F40ACB]"
-        >
-          <Image src={LinkedInLogo} alt="LinkedIn logo" />
-        </a>
-        <a
-          href="https://www.pinterest.co.uk/howmental/"
-          target="_blank"
-          class="mx-auto h-10 w-10 rounded-md bg-[#F40ACB]"
-        >
-          <Image src={PinterestLogo} alt="Pinterest logo" />
-        </a>
-      </div>
+      <NewsletterSocialLinks links={newsletterSocialLinks} />
     </div>
     <div class="flex justify-center bg-slate-50">
       <div class="mx-4 py-6 sm:w-[420px]">
@@ -329,9 +213,7 @@ import PinterestLogo from "../assets/PinterestLogo.png";
   </main>
   <footer role="contentinfo" class="pt-2 pb-8">
     <p class="font-sans">
-      Go <a href="/how-mental-newsletter/" class="hover:text-teal underline"
-        >back</a
-      >
+      Go <a href={newsletterBackPath} class="hover:text-teal underline">back</a>
     </p>
   </footer>
 </NewsletterLayout>
