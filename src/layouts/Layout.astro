@@ -4,19 +4,18 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import BubbleContainer from "../components/BubbleContainer.astro";
 import Seen from "../components/Seen.astro";
-const { title, description, canonical } = Astro.props;
+import type { PageMetadata } from "../data/site";
+
+const metadata = Astro.props as PageMetadata;
 ---
 
 <html lang="en-GB" dir="ltr">
-  <BaseHead title={title} description={description} canonical={canonical} />
+  <BaseHead {...metadata} />
   <body
     class="absolute inset-0 flex flex-col overflow-hidden font-sans text-sm text-black sm:text-base dark:bg-black dark:text-white"
   >
     <Header />
-    <main
-      role="main"
-      class="overflow-y-auto scroll-smooth subpixel-antialiased"
-    >
+    <main class="overflow-y-auto scroll-smooth subpixel-antialiased">
       <BubbleContainer>
         <slot />
         <Seen />
