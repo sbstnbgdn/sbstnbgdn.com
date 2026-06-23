@@ -25,7 +25,16 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: false,
   },
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      namespaces: {
+        news: false,
+        xhtml: false,
+        image: false,
+        video: false,
+      },
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

@@ -18,21 +18,22 @@
     "verify": "bun run lint:fix && bun run typecheck && bun run format:write && bun run knip && bun run build"
   },
   "dependencies": {
-    "@astrojs/sitemap": "3.7.1",
-    "@tailwindcss/vite": "4.2.2",
-    "astro": "6.0.8",
-    "tailwindcss": "4.2.2"
+    "@astrojs/sitemap": "3.7.3",
+    "@tailwindcss/vite": "4.3.1",
+    "astro": "7.0.0",
+    "tailwindcss": "4.3.1"
   },
   "devDependencies": {
-    "@astrojs/check": "0.9.8",
-    "@tailwindcss/node": "4.2.2",
-    "eslint": "10.1.0",
-    "eslint-plugin-astro": "1.6.0",
-    "knip": "6.0.2",
-    "prettier": "3.8.1",
+    "@astrojs/check": "0.9.9",
+    "@tailwindcss/node": "4.3.1",
+    "eslint": "10.5.0",
+    "eslint-plugin-astro": "2.0.0",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "knip": "6.18.0",
+    "prettier": "3.8.4",
     "prettier-plugin-astro": "0.14.1",
-    "prettier-plugin-tailwindcss": "0.7.2",
-    "typescript": "5.9.3",
-    "typescript-eslint": "8.57.1"
+    "prettier-plugin-tailwindcss": "0.8.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.62.0"
   }
 }

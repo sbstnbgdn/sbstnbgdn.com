@@ -1,14 +1,14 @@
-export type ExperienceSlug =
+type ExperienceSlug =
   | "how-mental-on-instagram"
   | "how-mental-on-twitter"
   | "how-mental-newsletter"
   | "community-management-for-playstark";
 
-export type ExperiencePart =
+type ExperiencePart =
   | { type: "text"; value: string }
   | { type: "link"; href: string; label: string; external?: boolean };
 
-export type ExperienceBlock =
+type ExperienceBlock =
   | { type: "bubble"; parts: ExperiencePart[] }
   | { type: "spacer" }
   | { type: "back-link" };
