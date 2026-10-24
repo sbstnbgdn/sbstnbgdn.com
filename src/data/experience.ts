@@ -1,41 +1,30 @@
-type ExperienceSlug =
-  | "how-mental-on-instagram"
-  | "how-mental-on-twitter"
-  | "how-mental-newsletter"
-  | "community-management-for-playstark";
-
-type ExperiencePart =
+type Part =
   | { type: "text"; value: string }
   | { type: "link"; href: string; label: string; external?: boolean };
 
-type ExperienceBlock =
-  | { type: "bubble"; parts: ExperiencePart[] }
+type Block =
+  | { type: "bubble"; parts: Part[] }
   | { type: "spacer" }
-  | { type: "back-link" };
+  | { type: "back" };
 
 export interface Experience {
-  slug: ExperienceSlug;
+  slug: string;
   title: string;
   description: string;
   heading: string;
-  order: number;
-  blocks: ExperienceBlock[];
+  blocks: Block[];
 }
 
-const spacer: ExperienceBlock = { type: "spacer" };
-const backLink: ExperienceBlock = { type: "back-link" };
-const text = (value: string): ExperiencePart => ({ type: "text", value });
-const link = (
-  href: string,
-  label: string,
-  external = false,
-): ExperiencePart => ({
+const spacer: Block = { type: "spacer" };
+const back: Block = { type: "back" };
+const text = (value: string): Part => ({ type: "text", value });
+const link = (href: string, label: string, external = false): Part => ({
   type: "link",
   href,
   label,
   external,
 });
-const bubble = (...parts: ExperiencePart[]): ExperienceBlock => ({
+const bubble = (...parts: Part[]): Block => ({
   type: "bubble",
   parts,
 });
@@ -46,8 +35,7 @@ export const experiences: Experience[] = [
     title: "How Mental on Instagram - Sebastian Bogdan",
     description:
       "Sebastian Bogdan boosted How Mental's Instagram, growing followers from 700k to 800k. Discover his content strategy and efficient scheduling.",
-    heading: "How Mental on Instagram:",
-    order: 1,
+    heading: "How Mental on Instagram",
     blocks: [
       spacer,
       bubble(
@@ -89,7 +77,7 @@ export const experiences: Experience[] = [
           "With there being more than one intern working on captions and sourcing at any given time, it was important to have a system that was easy to use and understand. This is something I worked on extensively so we could automate as much as possible to divert our resources to other areas.",
         ),
       ),
-      backLink,
+      back,
     ],
   },
   {
@@ -97,8 +85,7 @@ export const experiences: Experience[] = [
     title: "How Mental on Twitter - Sebastian Bogdan",
     description:
       "Sebastian Bogdan grew How Mental's Twitter following from 500 to 1,600+ with notable engagement. Explore his journey and key Twitter campaign insights.",
-    heading: "How Mental on Twitter:",
-    order: 2,
+    heading: "How Mental on Twitter",
     blocks: [
       spacer,
       bubble(
@@ -126,7 +113,7 @@ export const experiences: Experience[] = [
           "Running several Twitter campaigns taught me the value of one-to-one interactions and how to optimise posts that convert followers to consumers.",
         ),
       ),
-      backLink,
+      back,
     ],
   },
   {
@@ -134,8 +121,7 @@ export const experiences: Experience[] = [
     title: "How Mental Newsletter - Sebastian Bogdan",
     description:
       "Sebastian Bogdan mastered Drip email marketing, doubled How Mental's newsletter subscribers to nearly 3,000, and improved content for better engagement.",
-    heading: "How Mental Newsletter:",
-    order: 3,
+    heading: "How Mental Newsletter",
     blocks: [
       spacer,
       bubble(
@@ -164,7 +150,7 @@ export const experiences: Experience[] = [
           "I learned to use the email marketing platform Drip, and managed the subscriber list, optimising the newsletter content for the best open rates and click-through rates.",
         ),
       ),
-      backLink,
+      back,
     ],
   },
   {
@@ -172,8 +158,7 @@ export const experiences: Experience[] = [
     title: "Community Management for Playstark - Sebastian Bogdan",
     description:
       "Explore Sebastian Bogdan's journey from 16-year-old aspiring to skilled community manager, growing Playstark's gaming community with impressive stats.",
-    heading: "Community Management for Playstark:",
-    order: 4,
+    heading: "Community Management for Playstark",
     blocks: [
       spacer,
       bubble(
@@ -236,11 +221,7 @@ export const experiences: Experience[] = [
           "I learned valuable project management, time management, social media management, branding, and remote teamworking skills, working for an expert game development studio based in Spain.",
         ),
       ),
-      backLink,
+      back,
     ],
   },
 ];
-
-export function getOrderedExperiences(): Experience[] {
-  return [...experiences].sort((left, right) => left.order - right.order);
-}

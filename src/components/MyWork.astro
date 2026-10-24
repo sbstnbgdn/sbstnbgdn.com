@@ -1,15 +1,10 @@
 ---
-import { getOrderedExperiences } from "../data/experience";
+import { experiences } from "../data/experience";
 import LinkBubble from "./LinkBubble.astro";
-
-const experiences = getOrderedExperiences();
 ---
 
 {
   experiences.map((experience) => (
-    <LinkBubble
-      page={`/${experience.slug}`}
-      body={experience.heading.replace(/:$/, "")}
-    />
+    <LinkBubble page={`/${experience.slug}`} body={experience.heading} />
   ))
 }
