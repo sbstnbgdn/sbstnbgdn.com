@@ -4,9 +4,11 @@ import type { Post } from "../data/newsletter";
 import ExternalLink from "./ExternalLink.astro";
 import NewsletterButton from "./NewsletterButton.astro";
 
-const { post } = Astro.props as {
+interface Props {
   post: Post;
-};
+}
+
+const { post } = Astro.props;
 ---
 
 <div class:list={["flex flex-col items-center py-5", post.background]}>

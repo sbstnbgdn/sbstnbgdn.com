@@ -2,9 +2,11 @@
 import type { Link } from "../data/newsletter";
 import ExternalLink from "./ExternalLink.astro";
 
-const { link } = Astro.props as {
+interface Props {
   link: Link;
-};
+}
+
+const { link } = Astro.props;
 ---
 
 <ExternalLink

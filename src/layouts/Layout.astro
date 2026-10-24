@@ -6,7 +6,9 @@ import BubbleContainer from "../components/BubbleContainer.astro";
 import Seen from "../components/Seen.astro";
 import type { PageMetadata } from "../data/site";
 
-const metadata = Astro.props as PageMetadata;
+type Props = PageMetadata;
+
+const metadata = Astro.props;
 ---
 
 <html lang="en-GB" dir="ltr">
