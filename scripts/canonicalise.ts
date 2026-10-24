@@ -1,40 +1,23 @@
-import fs from "node:fs";
+import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { __unstable__loadDesignSystem } from "@tailwindcss/node";
 
-const ROOT = process.cwd();
-const SOURCE_ROOT = path.join(ROOT, "src");
-const GLOBALS_CSS_PATH = path.join(ROOT, "src/styles/global.css");
-const FILE_PATTERN = /\.(astro|css|ts)$/;
-const STRING_LITERAL_PATTERN = /(["'`])(?:\\.|(?!\1)[\s\S])*?\1/g;
-const APPLY_PATTERN = /@apply\s+([^;]+);/g;
-const LIKELY_CLASS_TOKEN_PATTERN =
-  /^(?:!?[@a-z0-9:_/.%#()[\],-]+|\[[^\]]+\])$/i;
+type Replacement = { from: string; to: string };
 
-type FileChange = {
-  filePath: string;
-  replacements: Array<{ from: string; to: string }>;
-};
+const root = process.cwd();
+const cssPath = path.join(root, "src/styles/global.css");
+const filePattern = /\.(astro|css|ts)$/;
+const stringPattern = /(["'`])(?:\\.|(?!\1)[\s\S])*?\1/g;
+const applyPattern = /@apply\s+([^;]+);/g;
+const classPattern = /^(?:!?[@a-z0-9:_/.%#()[\],-]+|\[[^\]]+\])$/i;
 
-function walkFiles(directoryPath: string, files: string[] = []) {
-  for (const entry of fs.readdirSync(directoryPath, { withFileTypes: true })) {
-    if (
-      entry.name === ".git" ||
-      entry.name === ".astro" ||
-      entry.name === "dist" ||
-      entry.name === "node_modules"
-    ) {
-      continue;
-    }
-
-    const fullPath = path.join(directoryPath, entry.name);
+function listFiles(directory: string, files: string[] = []) {
+  for (const entry of readdirSync(directory, { withFileTypes: true })) {
+    const fullPath = path.join(directory, entry.name);
     if (entry.isDirectory()) {
-      walkFiles(fullPath, files);
-      continue;
-    }
-
-    if (FILE_PATTERN.test(entry.name)) {
+      listFiles(fullPath, files);
+    } else if (filePattern.test(entry.name)) {
       files.push(fullPath);
     }
   }
@@ -45,95 +28,63 @@ function walkFiles(directoryPath: string, files: string[] = []) {
 function replaceTokens(
   value: string,
   canonicalise: (token: string) => string,
-): { value: string; replacements: Array<{ from: string; to: string }> } {
-  let nextValue = value;
-  const replacements: Array<{ from: string; to: string }> = [];
-  const seenTokens = new Set<string>();
+): { value: string; replacements: Replacement[] } {
+  let result = value;
+  const replacements: Replacement[] = [];
+  const seen = new Set<string>();
 
   for (const token of value.split(/\s+/)) {
-    if (
-      !token ||
-      seenTokens.has(token) ||
-      !LIKELY_CLASS_TOKEN_PATTERN.test(token)
-    ) {
+    if (!token || seen.has(token) || !classPattern.test(token)) {
       continue;
     }
 
-    seenTokens.add(token);
-    const canonicalToken = canonicalise(token);
+    seen.add(token);
+    const canonical = canonicalise(token);
 
-    if (!canonicalToken || canonicalToken === token) {
+    if (!canonical || canonical === token) {
       continue;
     }
 
-    nextValue = nextValue.split(token).join(canonicalToken);
-    replacements.push({ from: token, to: canonicalToken });
+    result = result.split(token).join(canonical);
+    replacements.push({ from: token, to: canonical });
   }
 
-  return { value: nextValue, replacements };
+  return { value: result, replacements };
 }
 
-async function main() {
-  const globalsCss = fs.readFileSync(GLOBALS_CSS_PATH, "utf8");
-  const designSystem = await __unstable__loadDesignSystem(globalsCss, {
-    base: path.dirname(GLOBALS_CSS_PATH),
-  });
+const designSystem = await __unstable__loadDesignSystem(
+  readFileSync(cssPath, "utf8"),
+  { base: path.dirname(cssPath) },
+);
 
-  const canonicalise = (token: string) =>
-    designSystem.canonicalizeCandidates([token])[0] ?? token;
-  const fileChanges: FileChange[] = [];
+const canonicalise = (token: string) =>
+  designSystem.canonicalizeCandidates([token])[0] ?? token;
 
-  for (const filePath of walkFiles(SOURCE_ROOT)) {
-    const originalContent = fs.readFileSync(filePath, "utf8");
-    let nextContent = originalContent;
-    const replacements: Array<{ from: string; to: string }> = [];
+for (const filePath of listFiles(path.join(root, "src"))) {
+  const original = readFileSync(filePath, "utf8");
+  const replacements: Replacement[] = [];
 
-    nextContent = nextContent.replace(STRING_LITERAL_PATTERN, (literal) => {
+  const content = original
+    .replace(stringPattern, (literal) => {
       const quote = literal[0];
-      const rawValue = literal.slice(1, -1);
-      const result = replaceTokens(rawValue, canonicalise);
-
-      if (result.replacements.length === 0) {
-        return literal;
-      }
-
+      const result = replaceTokens(literal.slice(1, -1), canonicalise);
       replacements.push(...result.replacements);
       return `${quote}${result.value}${quote}`;
-    });
-
-    nextContent = nextContent.replace(APPLY_PATTERN, (_, rawValue: string) => {
-      const result = replaceTokens(rawValue, canonicalise);
-
-      if (result.replacements.length === 0) {
-        return `@apply ${rawValue};`;
-      }
-
+    })
+    .replace(applyPattern, (_, value: string) => {
+      const result = replaceTokens(value, canonicalise);
       replacements.push(...result.replacements);
       return `@apply ${result.value};`;
     });
 
-    if (replacements.length === 0 || nextContent === originalContent) {
-      continue;
-    }
-
-    fs.writeFileSync(filePath, nextContent);
-
-    fileChanges.push({
-      filePath: path.relative(ROOT, filePath),
-      replacements,
-    });
+  if (replacements.length === 0 || content === original) {
+    continue;
   }
 
-  if (fileChanges.length === 0) {
-    return;
-  }
+  writeFileSync(filePath, content);
 
-  for (const change of fileChanges) {
-    console.log(change.filePath);
-    for (const replacement of change.replacements) {
-      console.log(`  ${replacement.from} -> ${replacement.to}`);
-    }
+  console.log(path.relative(root, filePath));
+  for (const { from, to } of replacements) {
+    console.log(`  ${from} -> ${to}`);
   }
 }
-
-await main();
