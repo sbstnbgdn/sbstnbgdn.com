@@ -4,7 +4,9 @@ import Favicon from "./Favicon.astro";
 import Font from "./Font.astro";
 import type { PageMetadata } from "../data/site";
 
-const metadata = Astro.props as PageMetadata;
+type Props = PageMetadata;
+
+const metadata = Astro.props;
 ---
 
 <head>

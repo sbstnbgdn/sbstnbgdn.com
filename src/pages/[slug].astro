@@ -14,7 +14,11 @@ export function getStaticPaths() {
   }));
 }
 
-const { experience } = Astro.props as { experience: Experience };
+interface Props {
+  experience: Experience;
+}
+
+const { experience } = Astro.props;
 ---
 
 <Layout

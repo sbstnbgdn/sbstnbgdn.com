@@ -1,8 +1,10 @@
 ---
 import { experiences } from "../data/experience";
+import Bubble from "./Bubble.astro";
 import LinkBubble from "./LinkBubble.astro";
 ---
 
+<Bubble><p>Here are a few examples of my work:</p></Bubble>
 {
   experiences.map((experience) => (
     <LinkBubble page={`/${experience.slug}`} body={experience.heading} />

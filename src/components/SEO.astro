@@ -1,6 +1,12 @@
 ---
-import { defaultDescription, siteName, themeColor } from "../data/site";
-import type { PageMetadata } from "../data/site";
+import {
+  defaultDescription,
+  siteName,
+  themeColor,
+  type PageMetadata,
+} from "../data/site";
+
+type Props = PageMetadata;
 
 const {
   title,
@@ -8,7 +14,7 @@ const {
   pathname,
   robots,
   includeCanonical = true,
-} = Astro.props as PageMetadata;
+} = Astro.props;
 
 const canonical =
   includeCanonical && pathname && import.meta.env.SITE

@@ -1,5 +1,11 @@
 ---
 import Bubble from "./Bubble.astro";
+
+interface Props {
+  page: string;
+  body: string;
+}
+
 const { page, body } = Astro.props;
 ---
 
