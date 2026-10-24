@@ -1,22 +1,24 @@
 ---
 import { Image } from "astro:assets";
+import Aura from "../assets/newsletter/Aura.png";
+import HowMentalDark from "../assets/newsletter/HowMentalDark.jpg";
+import HowMentalLight from "../assets/newsletter/HowMentalLight.png";
+import MentalMovement from "../assets/newsletter/MentalMovement.png";
+import MentalTips from "../assets/newsletter/MentalTips.png";
+import MentalTools from "../assets/newsletter/MentalTools.png";
 import ExternalLink from "../components/ExternalLink.astro";
 import NewsletterButton from "../components/NewsletterButton.astro";
-import NewsletterMediaSection from "../components/NewsletterMediaSection.astro";
-import NewsletterSocialLinks from "../components/NewsletterSocialLinks.astro";
+import NewsletterPost from "../components/NewsletterPost.astro";
 import {
-  auraLink,
-  instagramSection,
-  movementLink,
-  movementProducts,
-  newsletterAssets,
-  newsletterBackPath,
-  newsletterSocialLinks,
-  tipsLink,
-  toolsLink,
-  twitterSection,
+  instagram,
+  links,
+  products,
+  socials,
+  twitter,
 } from "../data/newsletter";
 import NewsletterLayout from "../layouts/NewsletterLayout.astro";
+
+const back = "/how-mental-newsletter";
 ---
 
 <NewsletterLayout
@@ -26,13 +28,13 @@ import NewsletterLayout from "../layouts/NewsletterLayout.astro";
 >
   <header role="banner" class="py-2">
     <p class="font-sans">
-      Go <a href={newsletterBackPath} class="hover:text-teal underline">back</a>
+      Go <a href={back} class="hover:text-teal underline">back</a>
     </p>
   </header>
   <main role="main">
     <div class="w-full bg-[#040404]">
       <Image
-        src={newsletterAssets.howMentalDark}
+        src={HowMentalDark}
         alt="How Mental logo"
         class="mx-auto w-[260px] py-4"
         loading="eager"
@@ -56,7 +58,7 @@ import NewsletterLayout from "../layouts/NewsletterLayout.astro";
     </div>
     <div class="flex flex-col items-center bg-[#F3FDF0] py-5">
       <Image
-        src={newsletterAssets.mentalTips}
+        src={MentalTips}
         alt="Mental Tips"
         class="px-4 sm:px-0"
         loading="eager"
@@ -90,16 +92,12 @@ import NewsletterLayout from "../layouts/NewsletterLayout.astro";
           up over the past, or the future. Love the stage you're at! 😘❤️
         </p>
       </div>
-      <NewsletterButton link={tipsLink} />
+      <NewsletterButton link={links.tips} />
     </div>
-    <NewsletterMediaSection section={instagramSection} />
-    <NewsletterMediaSection section={twitterSection} />
+    <NewsletterPost post={instagram} />
+    <NewsletterPost post={twitter} />
     <div class="flex flex-col items-center bg-[#FFF9EB] py-5">
-      <Image
-        src={newsletterAssets.mentalMovement}
-        alt="Mental Movement"
-        class="px-4 sm:px-0"
-      />
+      <Image src={MentalMovement} alt="Mental Movement" class="px-4 sm:px-0" />
       <div class="mx-4 my-5 rounded-xl bg-white p-8 sm:w-[580px]">
         <p class="font-bold">
           I don't know about you, but I'm DONE living in a world where wellbeing
@@ -116,7 +114,7 @@ import NewsletterLayout from "../layouts/NewsletterLayout.astro";
       </div>
       <div class="mx-4 mb-6 flex flex-col gap-5 sm:w-[580px] sm:flex-row">
         {
-          movementProducts.map((product) => (
+          products.map((product) => (
             <div class="sm:w-1/2">
               <ExternalLink href={product.href}>
                 <Image src={product.image} alt={product.alt} />
@@ -125,17 +123,13 @@ import NewsletterLayout from "../layouts/NewsletterLayout.astro";
           ))
         }
       </div>
-      <NewsletterButton link={movementLink} />
+      <NewsletterButton link={links.movement} />
     </div>
     <div class="flex flex-col items-center bg-[#FEE9F9] py-5">
-      <Image
-        src={newsletterAssets.mentalTools}
-        alt="Mental Tools"
-        class="px-4 sm:px-0"
-      />
+      <Image src={MentalTools} alt="Mental Tools" class="px-4 sm:px-0" />
       <div class="mx-4 my-5 sm:w-[580px]">
-        <ExternalLink href="https://www.howmental.com/item/aura">
-          <Image src={newsletterAssets.aura} alt="Aura logo" />
+        <ExternalLink href={links.aura.href}>
+          <Image src={Aura} alt="Aura logo" />
         </ExternalLink>
         <div class="rounded-b-xl bg-white px-8 py-6">
           <p class="font-bold">
@@ -159,10 +153,10 @@ import NewsletterLayout from "../layouts/NewsletterLayout.astro";
           </p>
         </div>
       </div>
-      <NewsletterButton link={auraLink} />
+      <NewsletterButton link={links.aura} />
       <div class="mx-4 my-5 flex flex-col items-center sm:w-[580px]">
-        <ExternalLink href="https://www.howmental.com/all/apps-products">
-          <Image src={newsletterAssets.howMentalLight} alt="How Mental logo" />
+        <ExternalLink href={links.tools.href}>
+          <Image src={HowMentalLight} alt="How Mental logo" />
         </ExternalLink>
         <div class="rounded-b-xl bg-white px-8 pb-6">
           <p class="font-bold">
@@ -177,7 +171,7 @@ import NewsletterLayout from "../layouts/NewsletterLayout.astro";
           </p>
         </div>
       </div>
-      <NewsletterButton link={toolsLink} />
+      <NewsletterButton link={links.tools} />
     </div>
     <div class="flex flex-col items-center bg-[#F0F0F0] py-5">
       <div class="mx-4 sm:w-[580px]">
@@ -193,7 +187,18 @@ import NewsletterLayout from "../layouts/NewsletterLayout.astro";
           <p class="font-bold">Stay Sane 😉</p>
         </div>
       </div>
-      <NewsletterSocialLinks links={newsletterSocialLinks} />
+      <div class="mx-auto my-8 flex justify-center gap-4 sm:w-[300px] sm:gap-0">
+        {
+          socials.map((social) => (
+            <ExternalLink
+              href={social.href}
+              class="mx-auto h-10 w-10 rounded-md bg-[#F40ACB]"
+            >
+              <Image src={social.icon} alt={social.alt} />
+            </ExternalLink>
+          ))
+        }
+      </div>
     </div>
     <div class="flex justify-center bg-slate-50">
       <div class="mx-4 py-6 sm:w-[420px]">
@@ -213,7 +218,7 @@ import NewsletterLayout from "../layouts/NewsletterLayout.astro";
   </main>
   <footer role="contentinfo" class="pt-2 pb-8">
     <p class="font-sans">
-      Go <a href={newsletterBackPath} class="hover:text-teal underline">back</a>
+      Go <a href={back} class="hover:text-teal underline">back</a>
     </p>
   </footer>
 </NewsletterLayout>

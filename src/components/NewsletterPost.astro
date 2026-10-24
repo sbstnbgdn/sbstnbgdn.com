@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+import type { Post } from "../data/newsletter";
+import ExternalLink from "./ExternalLink.astro";
+import NewsletterButton from "./NewsletterButton.astro";
+
+const { post } = Astro.props as {
+  post: Post;
+};
+---
+
+<div class:list={["flex flex-col items-center py-5", post.background]}>
+  <Image src={post.header} alt={post.headerAlt} class="px-4 sm:px-0" />
+  <div class="mx-4 my-5 sm:w-[580px]">
+    <ExternalLink href={post.href}>
+      <Image src={post.image} alt={post.imageAlt} />
+    </ExternalLink>
+    <div class="rounded-b-xl bg-white px-8 pt-4 pb-8">
+      <p>{post.body}</p>
+    </div>
+  </div>
+  <NewsletterButton link={post.cta} />
+</div>
