@@ -1,16 +1,48 @@
 ---
-import SEO from "./SEO.astro";
-import Favicon from "./Favicon.astro";
-import Font from "./Font.astro";
-import type { PageMetadata } from "../data/site";
+import "../styles/global.css";
+import font from "../assets/fonts/Inter-Regular.woff2";
 
-type Props = PageMetadata;
+export interface Props {
+  title: string;
+  description?: string;
+  pathname?: string;
+  robots?: string;
+  includeCanonical?: boolean;
+}
 
-const metadata = Astro.props;
+const {
+  title,
+  description = "Discover Sebastian Bogdan's portfolio as a digital marketer and web developer, specialising in social media, community management, and tech-integrated marketing.",
+  pathname,
+  robots,
+  includeCanonical = true,
+} = Astro.props;
+
+const canonical =
+  includeCanonical && pathname && import.meta.env.SITE
+    ? new URL(pathname, import.meta.env.SITE).toString()
+    : null;
 ---
 
 <head>
-  <SEO {...metadata} />
-  <Favicon />
-  <Font />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#008282" />
+  {robots && <meta name="robots" content={robots} />}
+  {canonical && <link rel="canonical" href={canonical} />}
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sebastian Bogdan" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  {canonical && <meta property="og:url" content={canonical} />}
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="preload" href={font} as="font" type="font/woff2" crossorigin />
 </head>

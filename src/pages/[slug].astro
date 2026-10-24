@@ -1,5 +1,4 @@
 ---
-import BackBubble from "../components/BackBubble.astro";
 import Bubble from "../components/Bubble.astro";
 import ExternalLink from "../components/ExternalLink.astro";
 import HeadingBubble from "../components/HeadingBubble.astro";
@@ -55,7 +54,19 @@ const { experience } = Astro.props;
         return <Spacer />;
       }
 
-      return <BackBubble />;
+      return (
+        <>
+          <Spacer />
+          <Bubble>
+            <p>
+              Go{" "}
+              <a class="hover:text-teal underline" href="/">
+                back
+              </a>
+            </p>
+          </Bubble>
+        </>
+      );
     })
   }
 </Layout>
