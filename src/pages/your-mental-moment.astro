@@ -6,6 +6,7 @@ import HowMentalLight from "../assets/newsletter/HowMentalLight.png";
 import MentalMovement from "../assets/newsletter/MentalMovement.png";
 import MentalTips from "../assets/newsletter/MentalTips.png";
 import MentalTools from "../assets/newsletter/MentalTools.png";
+import BaseHead from "../components/BaseHead.astro";
 import ExternalLink from "../components/ExternalLink.astro";
 import NewsletterButton from "../components/NewsletterButton.astro";
 import NewsletterPost from "../components/NewsletterPost.astro";
@@ -16,209 +17,223 @@ import {
   socials,
   twitter,
 } from "../data/newsletter";
-import NewsletterLayout from "../layouts/NewsletterLayout.astro";
 
 const back = "/how-mental-newsletter";
 ---
 
-<NewsletterLayout
-  title="Your Mental Moment - Sebastian Bogdan"
-  description="Discover a sample newsletter Sebastian Bogdan designed, wrote, and sent out to thousands of subscribers at How Mental, called 'Your Mental Moment'."
-  pathname="/your-mental-moment"
->
-  <header role="banner" class="py-2">
-    <p class="font-sans">
-      Go <a href={back} class="hover:text-teal underline">back</a>
-    </p>
-  </header>
-  <main role="main">
-    <div class="w-full bg-[#040404]">
-      <Image
-        src={HowMentalDark}
-        alt="How Mental logo"
-        class="mx-auto w-[260px] py-4"
-        loading="eager"
-      />
-    </div>
-    <div class="bg-[#F40ACB] py-12 text-2xl leading-tight text-white">
-      <p class="tracking-tight">Hey Sebastian!</p>
-      <p class="font-black tracking-tight">This is Your Mental Moment 🧠🎉</p>
-    </div>
-    <div class="flex justify-center bg-[#F0F0F0] py-5">
-      <div class="mx-4 rounded-xl bg-white p-8 sm:w-[580px]">
-        <p>
-          These emails are packed full of mental goodness, use them to:<br /><br
-          />1. Check in on your mind 🤙<br />
-          2. Help the people around you 🧑‍🤝‍🧑<br />
-          3. Get involved in The Mental Movement! 🌍❤️🧠<br /><br />We hope you
-          enjoy what we drop in ya inbox and your day is a shade brighter with
-          us. :)<br /><br />Love,<br /><br />George, Founder of How Mental
-        </p>
+<html lang="en-GB" dir="ltr">
+  <BaseHead
+    title="Your Mental Moment - Sebastian Bogdan"
+    description="Discover a sample newsletter Sebastian Bogdan designed, wrote, and sent out to thousands of subscribers at How Mental, called 'Your Mental Moment'."
+    pathname="/your-mental-moment"
+  />
+  <body class="font-arial text-center text-[#333333] subpixel-antialiased">
+    <header role="banner" class="py-2">
+      <p class="font-sans">
+        Go <a href={back} class="hover:text-teal underline">back</a>
+      </p>
+    </header>
+    <main role="main">
+      <div class="w-full bg-[#040404]">
+        <Image
+          src={HowMentalDark}
+          alt="How Mental logo"
+          class="mx-auto w-[260px] py-4"
+          loading="eager"
+        />
       </div>
-    </div>
-    <div class="flex flex-col items-center bg-[#F3FDF0] py-5">
-      <Image
-        src={MentalTips}
-        alt="Mental Tips"
-        class="px-4 sm:px-0"
-        loading="eager"
-      />
-      <div class="mx-4 my-5 rounded-xl bg-white p-8 sm:w-[580px]">
-        <p class="text-2xl font-bold">This Week's Mental Tip: LIFE STAGES 🧑‍🎤</p>
-        <br />
-        <p>
-          Recently I feel like I've entered a new stage of life. And, I started
-          to think...wtf is a stage of life?! Does that lens really help me when
-          I know I'm growing continuously? 🤔<br /><br />It's easy for me to
-          look back on my existence and say "oh, that's when I was friends with
-          X, or when I was doing Y job or when I was going through LMNOP",
-          y'know what I mean?<br /><br />That emo stage...that was REAL (yep, I
-          had one too 🙄) but it's also more than that. The people around me at
-          that stage of life were soooo different to the people I have in my
-          circle of friends now. We crossed for that moment and now we're in
-          different stages. 💁‍♀️<br /><br />When depression massively took over my
-          life for a year, I lost a lot. A lot of friends, a relationship, my
-          sanity. It was really fucking hard. And all I wanted back then was for
-          those people to stay, but that didn't happen. I was "too much" for
-          them to handle. And I just had to accept it... 😔<br /><br />The idea
-          of life stages made accepting losing those relationships easier. We
-          were at different stages, and they went down a different path, one
-          that doesn't include me. I can't beg people to stay in my life - and I
-          don't need to - I just have to move onto the next stage, with more
-          compatible friends.<br /><br />Still, losing people fucking sucks.
-          Change is HARD! There's no particular stage we need to get to. But
-          knowing and accepting our own stage can make things easier for us and
-          a LOT more pleasurable. So let it happen, my love. Don't beat yourself
-          up over the past, or the future. Love the stage you're at! 😘❤️
-        </p>
+      <div class="bg-[#F40ACB] py-12 text-2xl leading-tight text-white">
+        <p class="tracking-tight">Hey Sebastian!</p>
+        <p class="font-black tracking-tight">This is Your Mental Moment 🧠🎉</p>
       </div>
-      <NewsletterButton link={links.tips} />
-    </div>
-    <NewsletterPost post={instagram} />
-    <NewsletterPost post={twitter} />
-    <div class="flex flex-col items-center bg-[#FFF9EB] py-5">
-      <Image src={MentalMovement} alt="Mental Movement" class="px-4 sm:px-0" />
-      <div class="mx-4 my-5 rounded-xl bg-white p-8 sm:w-[580px]">
-        <p class="font-bold">
-          I don't know about you, but I'm DONE living in a world where wellbeing
-          isn't a priority. <span class="text-[#FDB21C]">Mental Clothes</span>
-          let people know you represent the need for change.
-        </p>
-        <br />
-        <p>
-          If you love our mission to make mental health a global priority and
-          want to help us start more conversations about it, join us by repping
-          The Mental Movement!<br /><br />And you'll look gooood whilst you're
-          doing it! 😉
-        </p>
+      <div class="flex justify-center bg-[#F0F0F0] py-5">
+        <div class="mx-4 rounded-xl bg-white p-8 sm:w-[580px]">
+          <p>
+            These emails are packed full of mental goodness, use them to:<br
+            /><br />1. Check in on your mind 🤙<br />
+            2. Help the people around you 🧑‍🤝‍🧑<br />
+            3. Get involved in The Mental Movement! 🌍❤️🧠<br /><br />We hope
+            you enjoy what we drop in ya inbox and your day is a shade brighter
+            with us. :)<br /><br />Love,<br /><br />George, Founder of How
+            Mental
+          </p>
+        </div>
       </div>
-      <div class="mx-4 mb-6 flex flex-col gap-5 sm:w-[580px] sm:flex-row">
-        {
-          products.map((product) => (
-            <div class="sm:w-1/2">
-              <ExternalLink href={product.href}>
-                <Image src={product.image} alt={product.alt} />
-              </ExternalLink>
-            </div>
-          ))
-        }
+      <div class="flex flex-col items-center bg-[#F3FDF0] py-5">
+        <Image
+          src={MentalTips}
+          alt="Mental Tips"
+          class="px-4 sm:px-0"
+          loading="eager"
+        />
+        <div class="mx-4 my-5 rounded-xl bg-white p-8 sm:w-[580px]">
+          <p class="text-2xl font-bold">
+            This Week's Mental Tip: LIFE STAGES 🧑‍🎤
+          </p>
+          <br />
+          <p>
+            Recently I feel like I've entered a new stage of life. And, I
+            started to think...wtf is a stage of life?! Does that lens really
+            help me when I know I'm growing continuously? 🤔<br /><br />It's
+            easy for me to look back on my existence and say "oh, that's when I
+            was friends with X, or when I was doing Y job or when I was going
+            through LMNOP", y'know what I mean?<br /><br />That emo stage...that
+            was REAL (yep, I had one too 🙄) but it's also more than that. The
+            people around me at that stage of life were soooo different to the
+            people I have in my circle of friends now. We crossed for that
+            moment and now we're in different stages. 💁‍♀️<br /><br />When
+            depression massively took over my life for a year, I lost a lot. A
+            lot of friends, a relationship, my sanity. It was really fucking
+            hard. And all I wanted back then was for those people to stay, but
+            that didn't happen. I was "too much" for them to handle. And I just
+            had to accept it... 😔<br /><br />The idea of life stages made
+            accepting losing those relationships easier. We were at different
+            stages, and they went down a different path, one that doesn't
+            include me. I can't beg people to stay in my life - and I don't need
+            to - I just have to move onto the next stage, with more compatible
+            friends.<br /><br />Still, losing people fucking sucks. Change is
+            HARD! There's no particular stage we need to get to. But knowing and
+            accepting our own stage can make things easier for us and a LOT more
+            pleasurable. So let it happen, my love. Don't beat yourself up over
+            the past, or the future. Love the stage you're at! 😘❤️
+          </p>
+        </div>
+        <NewsletterButton link={links.tips} />
       </div>
-      <NewsletterButton link={links.movement} />
-    </div>
-    <div class="flex flex-col items-center bg-[#FEE9F9] py-5">
-      <Image src={MentalTools} alt="Mental Tools" class="px-4 sm:px-0" />
-      <div class="mx-4 my-5 sm:w-[580px]">
-        <ExternalLink href={links.aura.href}>
-          <Image src={Aura} alt="Aura logo" />
-        </ExternalLink>
-        <div class="rounded-b-xl bg-white px-8 py-6">
+      <NewsletterPost post={instagram} />
+      <NewsletterPost post={twitter} />
+      <div class="flex flex-col items-center bg-[#FFF9EB] py-5">
+        <Image
+          src={MentalMovement}
+          alt="Mental Movement"
+          class="px-4 sm:px-0"
+        />
+        <div class="mx-4 my-5 rounded-xl bg-white p-8 sm:w-[580px]">
           <p class="font-bold">
-            Is it just me or has EVERYTHING been draining recently?? I've had
-            some awful sleep, and it feels like there isn't enough coffee in the
-            WORLD to get me out of it...
-          </p>
-          <br />
-          <p>
-            And I'm starting to think that coffee might be the problem 😅 I
-            don't think I've been taking care of my body enough, and maybe
-            that's what's making me feel this way? 🤷‍♂️ I mean, I said this to my
-            therapist and they nodded their head a lot more than they usually
-            do... 🤔<br /><br />So I looked into it, and found Aura. YES, they
-            do mindfulness - but nobody does it better! There's a reason they've
-            been called the Spotify of Mindfulness and that's because they've
-            got loadssss of coaches and professionals giving all the energy we
-            need to stay in tune, get focused and live with a little zen! 😇<br
-            /><br />Feel like chugging coffee isn't the way you wanna live? Try
-            this!<br />👇👇👇
-          </p>
-        </div>
-      </div>
-      <NewsletterButton link={links.aura} />
-      <div class="mx-4 my-5 flex flex-col items-center sm:w-[580px]">
-        <ExternalLink href={links.tools.href}>
-          <Image src={HowMentalLight} alt="How Mental logo" />
-        </ExternalLink>
-        <div class="rounded-b-xl bg-white px-8 pb-6">
-          <p class="font-bold">
-            Not interested in Aura? We've got a whole universe of tools for you
-            to try!
-          </p>
-          <br />
-          <p>
-            How Mental bridges the gap between you and all the Mental Tools,
-            Knowledge & Community you need to stay sane.<br /><br />Go ahead,
-            check out our website and get what you need!<br />😉👇
-          </p>
-        </div>
-      </div>
-      <NewsletterButton link={links.tools} />
-    </div>
-    <div class="flex flex-col items-center bg-[#F0F0F0] py-5">
-      <div class="mx-4 sm:w-[580px]">
-        <div class="rounded-xl bg-white p-8 text-left">
-          <p>
-            If you like what you've read, or have any suggestions, let us know
-            by filling out this form! 😇<br /><br />Oh, and if you know any
-            people or organisations making waves in mental health, tell us! The
-            Mental Movement will only work if we work together.<br /><br />Have
-            a LIVELY end of week! 🤪 Love you ❤️
-          </p>
-          <br />
-          <p class="font-bold">Stay Sane 😉</p>
-        </div>
-      </div>
-      <div class="mx-auto my-8 flex justify-center gap-4 sm:w-[300px] sm:gap-0">
-        {
-          socials.map((social) => (
-            <ExternalLink
-              href={social.href}
-              class="mx-auto h-10 w-10 rounded-md bg-[#F40ACB]"
+            I don't know about you, but I'm DONE living in a world where
+            wellbeing isn't a priority. <span class="text-[#FDB21C]"
+              >Mental Clothes</span
             >
-              <Image src={social.icon} alt={social.alt} />
-            </ExternalLink>
-          ))
-        }
-      </div>
-    </div>
-    <div class="flex justify-center bg-slate-50">
-      <div class="mx-4 py-6 sm:w-[420px]">
-        <p class="text-xs text-[#888888]">
-          To make sure you keep getting these emails, please add
-          <a href="mailto:hello@howmental.com" class="text-sky-600 underline"
-            >hello@howmental.com</a
-          > to your address book or allow list. Want out of the loop? <a
-            href="/"
-            class="text-sky-600 underline">Unsubscribe</a
-          >.<br />
+            let people know you represent the need for change.
+          </p>
           <br />
-          18 Sulgrave Road, LONDON, London, Middlesex, W6 7RP, GBR
-        </p>
+          <p>
+            If you love our mission to make mental health a global priority and
+            want to help us start more conversations about it, join us by
+            repping The Mental Movement!<br /><br />And you'll look gooood
+            whilst you're doing it! 😉
+          </p>
+        </div>
+        <div class="mx-4 mb-6 flex flex-col gap-5 sm:w-[580px] sm:flex-row">
+          {
+            products.map((product) => (
+              <div class="sm:w-1/2">
+                <ExternalLink href={product.href}>
+                  <Image src={product.image} alt={product.alt} />
+                </ExternalLink>
+              </div>
+            ))
+          }
+        </div>
+        <NewsletterButton link={links.movement} />
       </div>
-    </div>
-  </main>
-  <footer role="contentinfo" class="pt-2 pb-8">
-    <p class="font-sans">
-      Go <a href={back} class="hover:text-teal underline">back</a>
-    </p>
-  </footer>
-</NewsletterLayout>
+      <div class="flex flex-col items-center bg-[#FEE9F9] py-5">
+        <Image src={MentalTools} alt="Mental Tools" class="px-4 sm:px-0" />
+        <div class="mx-4 my-5 sm:w-[580px]">
+          <ExternalLink href={links.aura.href}>
+            <Image src={Aura} alt="Aura logo" />
+          </ExternalLink>
+          <div class="rounded-b-xl bg-white px-8 py-6">
+            <p class="font-bold">
+              Is it just me or has EVERYTHING been draining recently?? I've had
+              some awful sleep, and it feels like there isn't enough coffee in
+              the WORLD to get me out of it...
+            </p>
+            <br />
+            <p>
+              And I'm starting to think that coffee might be the problem 😅 I
+              don't think I've been taking care of my body enough, and maybe
+              that's what's making me feel this way? 🤷‍♂️ I mean, I said this to
+              my therapist and they nodded their head a lot more than they
+              usually do... 🤔<br /><br />So I looked into it, and found Aura.
+              YES, they do mindfulness - but nobody does it better! There's a
+              reason they've been called the Spotify of Mindfulness and that's
+              because they've got loadssss of coaches and professionals giving
+              all the energy we need to stay in tune, get focused and live with
+              a little zen! 😇<br /><br />Feel like chugging coffee isn't the
+              way you wanna live? Try this!<br />👇👇👇
+            </p>
+          </div>
+        </div>
+        <NewsletterButton link={links.aura} />
+        <div class="mx-4 my-5 flex flex-col items-center sm:w-[580px]">
+          <ExternalLink href={links.tools.href}>
+            <Image src={HowMentalLight} alt="How Mental logo" />
+          </ExternalLink>
+          <div class="rounded-b-xl bg-white px-8 pb-6">
+            <p class="font-bold">
+              Not interested in Aura? We've got a whole universe of tools for
+              you to try!
+            </p>
+            <br />
+            <p>
+              How Mental bridges the gap between you and all the Mental Tools,
+              Knowledge & Community you need to stay sane.<br /><br />Go ahead,
+              check out our website and get what you need!<br />😉👇
+            </p>
+          </div>
+        </div>
+        <NewsletterButton link={links.tools} />
+      </div>
+      <div class="flex flex-col items-center bg-[#F0F0F0] py-5">
+        <div class="mx-4 sm:w-[580px]">
+          <div class="rounded-xl bg-white p-8 text-left">
+            <p>
+              If you like what you've read, or have any suggestions, let us know
+              by filling out this form! 😇<br /><br />Oh, and if you know any
+              people or organisations making waves in mental health, tell us!
+              The Mental Movement will only work if we work together.<br /><br
+              />Have a LIVELY end of week! 🤪 Love you ❤️
+            </p>
+            <br />
+            <p class="font-bold">Stay Sane 😉</p>
+          </div>
+        </div>
+        <div
+          class="mx-auto my-8 flex justify-center gap-4 sm:w-[300px] sm:gap-0"
+        >
+          {
+            socials.map((social) => (
+              <ExternalLink
+                href={social.href}
+                class="mx-auto h-10 w-10 rounded-md bg-[#F40ACB]"
+              >
+                <Image src={social.icon} alt={social.alt} />
+              </ExternalLink>
+            ))
+          }
+        </div>
+      </div>
+      <div class="flex justify-center bg-slate-50">
+        <div class="mx-4 py-6 sm:w-[420px]">
+          <p class="text-xs text-[#888888]">
+            To make sure you keep getting these emails, please add
+            <a href="mailto:hello@howmental.com" class="text-sky-600 underline"
+              >hello@howmental.com</a
+            > to your address book or allow list. Want out of the loop? <a
+              href="/"
+              class="text-sky-600 underline">Unsubscribe</a
+            >.<br />
+            <br />
+            18 Sulgrave Road, LONDON, London, Middlesex, W6 7RP, GBR
+          </p>
+        </div>
+      </div>
+    </main>
+    <footer role="contentinfo" class="pt-2 pb-8">
+      <p class="font-sans">
+        Go <a href={back} class="hover:text-teal underline">back</a>
+      </p>
+    </footer>
+  </body>
+</html>

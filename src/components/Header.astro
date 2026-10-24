@@ -1,13 +1,23 @@
 ---
+import { Image } from "astro:assets";
+import profile from "../assets/SB.jpg";
 import ExternalLink from "./ExternalLink.astro";
-import ProfilePicture from "./ProfilePicture.astro";
 ---
 
 <header
   role="banner"
   class="sticky top-0 z-10 flex min-h-min w-full flex-col items-center justify-center border-b border-neutral-200 bg-zinc-100 py-3 dark:border-neutral-900 dark:bg-zinc-900"
 >
-  <ProfilePicture />
+  <Image
+    class="h-[100px] w-[100px] rounded-full landscape:hidden md:landscape:block"
+    src={profile}
+    width="150"
+    height="150"
+    quality="high"
+    loading="eager"
+    decoding="async"
+    alt="A portrait of Sebastian Bogdan"
+  />
   <a
     class="hover:text-teal mt-2 text-center landscape:mt-0 md:landscape:mt-2"
     href="/">Sebastian Bogdan</a

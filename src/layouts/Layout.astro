@@ -1,12 +1,6 @@
 ---
-import "../styles/global.css";
-import BaseHead from "../components/BaseHead.astro";
+import BaseHead, { type Props } from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
-import BubbleContainer from "../components/BubbleContainer.astro";
-import Seen from "../components/Seen.astro";
-import type { PageMetadata } from "../data/site";
-
-type Props = PageMetadata;
 
 const metadata = Astro.props;
 ---
@@ -18,10 +12,12 @@ const metadata = Astro.props;
   >
     <Header />
     <main class="overflow-y-auto scroll-smooth subpixel-antialiased">
-      <BubbleContainer>
+      <div
+        class="container ms-4 flex max-w-[18rem] flex-col py-3 sm:ms-6 sm:max-w-lg sm:py-6 md:max-w-xl lg:max-w-3xl xl:max-w-4xl 2xl:max-w-5xl"
+      >
         <slot />
-        <Seen />
-      </BubbleContainer>
+        <p class="ms-2 mt-2 text-xs text-neutral-500">Seen</p>
+      </div>
     </main>
   </body>
 </html>
