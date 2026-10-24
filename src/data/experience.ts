@@ -136,7 +136,7 @@ export const experiences: Experience[] = [
       ),
       bubble(
         text(
-          "But I got the hang of it eventually: I thought the best way to familarise myself with the interface is to redesign the newsletter. That way, I'd get comprehensive knowledge of each feature available to me, and the newsletter gets a nice facelift.",
+          "But I got the hang of it eventually: I thought the best way to familiarise myself with the interface is to redesign the newsletter. That way, I'd get comprehensive knowledge of each feature available to me, and the newsletter gets a nice facelift.",
         ),
       ),
       bubble(
