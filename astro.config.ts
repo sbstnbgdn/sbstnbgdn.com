@@ -27,6 +27,10 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
+      // Leaves the booking thank-you page out of the sitemap. The sitemap's option made for this shares its name
+      // with a Tailwind class, and Tailwind reads this file for class names, so using it would add CSS to every page.
+      serialize: (item) =>
+        new URL(item.url).pathname === "/see-you-soon" ? undefined : item,
       namespaces: {
         news: false,
         xhtml: false,
