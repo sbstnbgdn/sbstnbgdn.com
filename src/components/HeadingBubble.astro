@@ -2,12 +2,12 @@
 import Bubble from "./Bubble.astro";
 
 interface Props {
-  body: string;
+  text: string;
 }
 
-const { body } = Astro.props;
+const { text } = Astro.props;
 ---
 
 <Bubble>
-  <h1>{body}</h1>
+  <h1>{text}</h1>
 </Bubble>

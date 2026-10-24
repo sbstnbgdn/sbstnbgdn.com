@@ -1,12 +1,12 @@
 ---
-import BaseHead, { type Props } from "../components/BaseHead.astro";
+import Head, { type Props } from "../components/Head.astro";
 import Header from "../components/Header.astro";
 
 const metadata = Astro.props;
 ---
 
 <html lang="en-GB" dir="ltr">
-  <BaseHead {...metadata} />
+  <Head {...metadata} />
   <body
     class="absolute inset-0 flex flex-col overflow-hidden font-sans text-sm text-black sm:text-base dark:bg-black dark:text-white"
   >

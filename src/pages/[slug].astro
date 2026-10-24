@@ -25,7 +25,7 @@ const { experience } = Astro.props;
   description={experience.description}
   pathname={`/${experience.slug}`}
 >
-  <HeadingBubble body={`${experience.heading}:`} />
+  <HeadingBubble text={`${experience.heading}:`} />
   {
     experience.blocks.map((block) => {
       if (block.type === "bubble") {
