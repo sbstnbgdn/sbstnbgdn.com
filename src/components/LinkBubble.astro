@@ -2,15 +2,15 @@
 import Bubble from "./Bubble.astro";
 
 interface Props {
-  page: string;
-  body: string;
+  href: string;
+  text: string;
 }
 
-const { page, body } = Astro.props;
+const { href, text } = Astro.props;
 ---
 
 <Bubble>
   <h2>
-    <a class="hover:text-teal underline" href={page}>{body}</a>
+    <a class="hover:text-teal underline" href={href}>{text}</a>
   </h2>
 </Bubble>

@@ -7,6 +7,6 @@ import LinkBubble from "./LinkBubble.astro";
 <Bubble><p>Here are a few examples of my work:</p></Bubble>
 {
   experiences.map((experience) => (
-    <LinkBubble page={`/${experience.slug}`} body={experience.heading} />
+    <LinkBubble href={`/${experience.slug}`} text={experience.heading} />
   ))
 }

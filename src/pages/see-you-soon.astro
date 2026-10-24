@@ -3,11 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import HeadingBubble from "../components/HeadingBubble.astro";
 import Bubble from "../components/Bubble.astro";
 import Spacer from "../components/Spacer.astro";
-import MyWork from "../components/MyWork.astro";
+import Work from "../components/Work.astro";
 ---
 
 <Layout title="Sebastian Bogdan" pathname="/see-you-soon">
-  <HeadingBubble body="Thank you for booking time to meet with me!" />
+  <HeadingBubble text="Thank you for booking time to meet with me!" />
   <Bubble><p>I'm looking forward to meeting you. :)</p></Bubble>
   <Spacer />
   <Bubble>
@@ -16,5 +16,5 @@ import MyWork from "../components/MyWork.astro";
     </p>
   </Bubble>
   <Spacer />
-  <MyWork />
+  <Work />
 </Layout>
