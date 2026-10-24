@@ -1,17 +1,15 @@
 import type { Linter } from "eslint";
-import eslintPluginAstro from "eslint-plugin-astro";
+import astro from "eslint-plugin-astro";
 import tseslint from "typescript-eslint";
 
 export default [
   {
-    ignores: ["dist/**", ".astro/**", "node_modules/**"],
+    ignores: ["dist/**", ".astro/**"],
   },
   ...tseslint.configs.recommended,
-  ...eslintPluginAstro.configs.recommended,
+  ...astro.configs.recommended,
   {
     rules: {
-      "no-undef": "off",
-      "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": [
         "error",
         {

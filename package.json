@@ -2,7 +2,6 @@
   "name": "sbstnbgdn.com",
   "private": true,
   "type": "module",
-  "version": "2.0.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -15,7 +14,7 @@
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
     "check": "bun run lint:fix && bun run typecheck && bun run knip",
-    "verify": "bun run lint:fix && bun run typecheck && bun run format:write && bun run knip && bun run build"
+    "verify": "bun run check && bun run format:write && bun run build"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.3",
@@ -28,7 +27,6 @@
     "@tailwindcss/node": "4.3.1",
     "eslint": "10.5.0",
     "eslint-plugin-astro": "2.0.0",
-    "eslint-plugin-jsx-a11y": "6.10.2",
     "knip": "6.18.0",
     "prettier": "3.8.4",
     "prettier-plugin-astro": "0.14.1",
